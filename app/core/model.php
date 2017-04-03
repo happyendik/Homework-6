@@ -13,7 +13,7 @@ class Model
     public $db_name = 'Homework_3';
     public $db_user = 'root';
     public $db_pass = '';
-
+    // вынести коныигурационные данные в отдельный файл
     public $connection;
 
     public $statusModel = array();
@@ -31,7 +31,7 @@ class Model
         }
     }
 
-
+    // зачем мертвый метод?
     public function get_data()
     {
     }

@@ -1,5 +1,5 @@
 <?php
-
+// Перменовать все классы в CamelCase в соответсвии со стандартом psr
 class Model_auth extends Model
 {
 
