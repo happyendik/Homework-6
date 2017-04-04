@@ -8,10 +8,10 @@
 <h3>Настройка...</h3>
 
 <?php
-
+// если ты вынес зачем это осталось? этот файл тоже должен использывать настройки из конфигурационного файла
 $db_host = 'localhost';
 $db_name = 'Homework_3';
-$db_user = 'root';
+$db_user = '';
 $db_pass = '';
 function queryMysql($query)
 {
