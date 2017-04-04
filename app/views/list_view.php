@@ -24,14 +24,21 @@ _EOF;
             <td>$name</td>
             <td>$age</td>
             <td>$desc</td>
-            <td><img src='/photos/$photo' alt=''></td>
+_EOF;
+        if ($photo !== null) {
+            echo "<td><img src='/photos/$photo' alt=''></td>";
+        } else {
+            echo "<td>NO IMAGE</td>";
+        }
+echo "  
             <td>
                 <a href='/list/delete/$login'>Удалить пользователя</a>
             </td>
-        </tr>
-_EOF;
+
+";
     }
 echo <<<_EOF
+        </tr>
     </table>
 </div><!-- /.container -->
 _EOF;

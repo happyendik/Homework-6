@@ -1,5 +1,5 @@
 <?php
-class Model_filelist extends Model
+class ModelFilelist extends Model
 {
     public function showInformationList()
     {

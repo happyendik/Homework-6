@@ -1,20 +1,20 @@
 <?php
 
-class Controller_reg extends Controller
+class ControllerReg extends Controller
 {
     public function __construct()
     {
-        $this->model = new Model_reg();
+        $this->model = new ModelReg();
         $this->view = new View();
     }
 
-    public function action_index()
+    public function actionIndex()
     {
-        $data = $this->model->statusModel;  // вывод ошибок и замечаний
-        $this->view->generate('reg_view.php', 'template_view.php', $data);
+        //$data = $this->model->statusModel;  // вывод ошибок и замечаний
+        $this->view->generate('reg_view.php', 'template_view.php');
     }
 
-    public function action_post()
+    public function actionPost()
     {
         $this->model->postHandler();
         $data = $this->model->statusModel;  // вывод ошибок и замечаний
@@ -23,7 +23,7 @@ class Controller_reg extends Controller
 
     }
 
-    public function action_exit()
+    public function actionExit()
     {
         if (session_id() != "" || isset($_COOKIE[session_name()])) {
             setcookie(session_name(), '', time() - 2592000, '/');

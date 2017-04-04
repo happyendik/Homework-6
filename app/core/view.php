@@ -6,7 +6,7 @@ class View
 
     public function generate($content_view, $template_view, $data = null, $data2 = null)
     {
-        /*
+        /* можно проебразовать элементы массива в переменные
         if(is_array($data)) {
             // преобразуем элементы массива в переменные
             extract($data);

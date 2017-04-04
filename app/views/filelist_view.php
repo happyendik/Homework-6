@@ -6,25 +6,27 @@ if (isset($data2)) {
         <tr>
           <th>Название файла</th>
           <th>Фотография</th>
-          <th>Действия</th>
+          <th>Действие</th>
         </tr>
 _EOF;
     foreach ($data2 as $row) {
         $login = $row['member_login'];
         $photo = $row['photo'];
-        echo <<<_EOF
+echo "
         <tr>
-          <td>$photo</td>
-          <td><img src="/photos/$photo" alt=""></td>
-          <td>
-                <a href='/filelist/delete/$photo'>Удалить аватарку</a>
-          </td>
-        </tr>
-_EOF;
+          <td>$login</td>
+";
+          if ($photo !== null){
+              echo "<td><img src='/photos/$photo' alt=''></td>";
+              echo "<td><a href='/filelist/delete/$photo'>Удалить аватарку</a></td>";
+          } else {
+              echo "<td>NO IMAGE</td>";
+              echo "<td>NO IMAGE</td>";
+          }
     }
-echo <<<_EOF
+    echo <<<_EOF
+</tr>
     </table>
 </div><!-- /.container -->
 _EOF;
-
 }

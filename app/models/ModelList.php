@@ -1,10 +1,10 @@
 <?php
-class Model_list extends Model
+class ModelList extends Model
 {
     public function showInformationList()
     {
         //$member_login = $_SESSION['login'];
-        $result = $this->queryMysql("SELECT * FROM member_info");
+        $result = $this->queryMysql("SELECT * FROM member_info ORDER BY age DESC");
         $arr = [];
         while ($row = $result->fetch_assoc()) {
             array_push($arr, $row);

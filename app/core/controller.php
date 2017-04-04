@@ -1,17 +1,18 @@
 <?php
 
-class Controller {
+class Controller
+{
 
     public $model;
     public $view;
-    public $action_var;
+    public $actionVar;
 
     function __construct()
     {
         $this->view = new View();
     }
 
-    function action_index()
+    function actionIndex()
     {
     }
 }

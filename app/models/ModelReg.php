@@ -1,25 +1,7 @@
 <?php
 
-class Model_reg extends Model
+class ModelReg extends Model
 {
-    public function get_data()
-    {
-        /*return array(
-
-            array(
-                'Year' => '2012',
-                'Site' => 'http://DunkelBeer.ru',
-                'Description' => 'Промо-сайт темного пива Dunkel от немецкого производителя Löwenbraü выпускаемого в России пивоваренной компанией "CАН ИнБев".'
-            ),
-            array(
-                'Year' => '2012',
-                'Site' => 'http://ZopoMobile.ru',
-                'Description' => 'Русскоязычный каталог китайских телефонов компании Zopo на базе Android OS и аксессуаров к ним.'
-            ),
-            // todo
-        );*/
-    }
-
     public function postHandler()
     {
         if ($_POST['login']) {
@@ -38,7 +20,7 @@ class Model_reg extends Model
                     $password = hash('ripemd128', "$password1");
                     $this->queryMysql("INSERT INTO members VALUES(0, '$login', '$password');");
                     $_SESSION['login'] = $login;
-                    array_push($this->statusModel, 'Данные должны записаться<br>');
+                    array_push($this->statusModel, 'Данные сохранены.<br>');
                     header('Location: /profile/index');
                     exit();
                 }

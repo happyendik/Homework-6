@@ -4,22 +4,15 @@ class Route
 {
     static public function sessionStart()
     {
-        $check = session_start();
-        /* если раскомментить, то не будет работать controller_reg->action_exit
-        if ($check) {   // Test block
-            echo 'Сессияя успешно стартовала';
-        } else {
-            echo 'Ошибка!Сессия не стартовала.';
-        }
-*/
+        session_start();
     }
 
     static function start()
     {
         // контроллер и действие по умолчанию
-        $controller_name = 'auth';
-        $action_name = 'index';
-        $action_var = null;
+        $controller_name = 'Auth';
+        $action_name = 'Index';
+        $actionVar = null;
 
         $routes = explode('/', $_SERVER['REQUEST_URI']);
 
@@ -34,22 +27,22 @@ class Route
         {
             $action_name = $routes[2];
         }
-
+        //получаем значение параметра
         if ( !empty($routes[3]) )
         {
-            $action_var = $routes[3];
+            $actionVar = strtolower($routes[3]);
         }
 
         // добавляем префиксы
-        $model_name = 'Model_'.$controller_name;
-        $controller_name = 'Controller_'.$controller_name;
-        $action_name = 'action_'.$action_name;
+        $model_name = 'Model'.ucwords(strtolower($controller_name));
+        $controller_name = 'Controller'.ucwords(strtolower($controller_name));
+        $action_name = 'action'.ucwords(strtolower($action_name));
 
         // подцепляем файл с классом модели (файла модели может и не быть)
 
 
 
-        $model_file = strtolower($model_name).'.php';
+        $model_file = $model_name.'.php';
         $model_path = "app/models/".$model_file;
         if(file_exists($model_path))
         {
@@ -57,7 +50,7 @@ class Route
         }
 
         // подцепляем файл с классом контроллера
-        $controller_file = strtolower($controller_name).'.php';
+        $controller_file = $controller_name.'.php';
         $controller_path = "app/controllers/".$controller_file;
         if(file_exists($controller_path))
         {
@@ -78,7 +71,7 @@ class Route
 
         if(method_exists($controller, $action))
         {
-            $controller->action_var = strtolower($action_var);
+            $controller->actionVar = $actionVar;
             // вызываем действие контроллера
             $controller->$action();
         }
