@@ -34,5 +34,12 @@ class Model
         $this->connect->connection->close();
     }
 
+    public function checkAccess()
+    {
+        if (!isset($_SESSION['login'])){
+            Route::ErrorPage404();
+            exit();
+        }
+    }
 
 }

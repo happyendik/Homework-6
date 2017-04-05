@@ -5,13 +5,6 @@ class ModelProfile extends Model
 {
     use ProfileImage;
     //проверяем доступ к данной странице. Для незарегистрированного пользователя она закрыта
-    public function checkAccess()
-    {
-        if (!isset($_SESSION['login'])){
-            Route::ErrorPage404();
-            exit();
-        }
-    }
 
     public function showProfileInformation()
     {

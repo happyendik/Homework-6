@@ -11,6 +11,10 @@ class ControllerAuth extends Controller
 
     public function actionIndex()
     {
+        if (isset($_SESSION['login'])) {
+            header('Location: /profile/index');
+            exit();
+        }
         //$data = $this->model->statusModel; //вывод ошибок и замечаний
         $this->view->generate('auth_view.php', 'template_view.php');
     }

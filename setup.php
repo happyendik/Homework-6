@@ -8,11 +8,9 @@
 <h3>Настройка...</h3>
 
 <?php
-// если ты вынес зачем это осталось? этот файл тоже должен использывать настройки из конфигурационного файла
-$db_host = 'localhost';
-$db_name = 'Homework_3';
-$db_user = '';
-$db_pass = '';
+require_once 'app/core/db.php';
+require_once 'app/core/model.php';
+
 function queryMysql($query)
 {
     global $connection;
@@ -22,29 +20,31 @@ function queryMysql($query)
     }
     return $result;
 }
+
 function createDATABASE($name)
 {
     queryMysql("CREATE DATABASE IF NOT EXISTS $name CHARACTER SET utf8 COLLATE utf8_unicode_ci");
     echo "База данных '$name' создана или уже существовала<br>";
 }
+
 function createTable($name, $query)
 {
     queryMysql("CREATE TABLE IF NOT EXISTS $name($query) ENGINE MyISAM");
     echo "Таблица '$name' создана или уже существовала<br>";
 }
 
-$connection = new mysqli($db_host, $db_user, $db_pass);
+$connection = new mysqli(DB::DBHOST, DB::DBUSER, DB::DBPASS);
 if ($connection->connect_error) {
     die ('Ошибка ' . $connection->connect_errno . ' при подключении базы данных.<br>Описание: '. $connection->connect_error);
 }
-createDATABASE($db_name);
+createDATABASE(DB::DBNAME);
 $connection->close();
 ?>
 
 <br>...Этап создания БД завершен!<br><br>
 
 <?php
-$connection = new mysqli($db_host, $db_user, $db_pass, $db_name);
+$connection = new mysqli(DB::DBHOST, DB::DBUSER, DB::DBPASS, DB::DBNAME);
 if ($connection->connect_error) {
     die ('Ошибка ' . $connection->connect_errno . ' при подключении базы данных.<br>Описание: '. $connection->connect_error);
 }

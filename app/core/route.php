@@ -7,7 +7,7 @@ class Route
         session_start();
     }
 
-    static function start()
+    function start()
     {
         // контроллер и действие по умолчанию
         $controller_name = 'Auth';
