@@ -19,6 +19,10 @@
     <![endif]-->
 </head>
 <body>
+{% block menu %}
+{% endblock %}
+{% block content%}
+{% endblock %}
 <?php if (isset($_SESSION['login'])) {
         include_once 'app/views/admin_menu_view.php';
     } else {
@@ -30,6 +34,15 @@
 echo $data[1]; // Вывод информации о возрасте юзера
 ?>
 </div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>
 
 
 
