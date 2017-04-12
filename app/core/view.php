@@ -12,10 +12,11 @@ class View
             extract($data);
         }
         */
-
-        include 'app/views/'.$template_view;
-
-        include_once 'app/views/'.$content_view;
+       // и кстати просит template_view.php а во view такого нет
+//        include 'app/views/'.$template_view; не может подключить эти файлы так как не найден путь  require '../../app/views'.$template_view; так как минимум
+        require_once '../../app/views/' . $template_view;
+        require '../../app/views/'.$content_view;
+//        include_once 'app/views/'.$content_view;
 
 echo <<<_EOF
         <!-- Bootstrap core JavaScript

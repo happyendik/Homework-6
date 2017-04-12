@@ -11,7 +11,7 @@ class DB
     const DBHOST = 'localhost';
     const DBNAME = 'Homework_3';
     const DBUSER = 'root';
-    const DBPASS = '';
+    const DBPASS = 'y2uDk7L3IP';
 
     public $connection;
 

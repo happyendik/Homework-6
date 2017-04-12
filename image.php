@@ -1,6 +1,6 @@
 <?php
-require_once '.\vendor\autoload.php';
-
+//require_once '.\vendor\autoload.php'; пути так не прописываются даже если windows
+require 'vendor/autoload.php';
 use Intervention\Image\ImageManager;
 
 $manager = new ImageManager(array('driver' => 'gd'));
